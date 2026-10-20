@@ -32,6 +32,7 @@
       <nav id="menu" class="menu" aria-label="Main" data-menu>
         <a href="#work">Work</a>
         <a href="#studio">Studio</a>
+        <a href="#team">Team</a>
         <a href="#contact">Contact</a>
         <a href="#contact" class="btn btn-light magnetic">Start a project</a>
       </nav>
@@ -121,26 +122,41 @@
         <!-- SPLIT SCREEN -->
         <article class="project project-flip" id="splitscreen">
           <div class="project-media reveal">
-            <div class="ss" data-ss>
-              <div class="ss-view ss-p1">
-                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
-                <span class="ss-label">P1</span>
-              </div>
-              <div class="ss-view ss-p2" data-ss-p2>
-                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
-                <span class="ss-flicker" aria-hidden="true"></span>
-                <span class="ss-label">P2</span>
-              </div>
-              <div class="ss-divider" aria-hidden="true"></div>
-              <p class="ss-status" data-ss-status aria-live="polite">P2: black screen</p>
+            <div class="clip" data-clip>
+              <video class="clip-video is-active" muted loop playsinline preload="none" poster="/assets/batman/drive-poster.jpg" data-src="/assets/batman/drive.mp4" aria-label="Split-screen gameplay: both players driving the Batmobile through Gotham"></video>
+              <video class="clip-video" muted loop playsinline preload="none" poster="/assets/batman/batcave-poster.jpg" data-src="/assets/batman/batcave.mp4" aria-label="Split-screen gameplay in the Batcave training simulation"></video>
+              <span class="clip-badge">Captured in-game · 2 players</span>
+              <button type="button" class="clip-play" data-clip-toggle aria-label="Pause video"><span aria-hidden="true"></span></button>
             </div>
-            <div class="ss-fixes" role="group" aria-label="Toggle rendering fixes for player 2">
-              <button type="button" aria-pressed="false" data-fix="culling"><b>01</b> Culling</button>
-              <button type="button" aria-pressed="false" data-fix="lighting"><b>02</b> Lighting</button>
-              <button type="button" aria-pressed="false" data-fix="ssbn"><b>03</b> SSBN</button>
-              <button type="button" aria-pressed="false" data-fix="composite"><b>04</b> Composite</button>
+            <div class="shot-tabs" role="tablist" aria-label="Split-screen clips">
+              <button role="tab" aria-selected="true" data-clip-tab="0">Batmobile</button>
+              <button role="tab" aria-selected="false" data-clip-tab="1">Batcave</button>
             </div>
-            <p class="ss-hint">Turn the fixes on to see player two's view come back. An illustration, not game footage.</p>
+
+            <div class="fixlab">
+              <div class="fixlab-head">
+                <h4>How player two got their screen back</h4>
+                <p>Toggle each fix on a real frame. Player two's half shows what that bug looked like.</p>
+              </div>
+              <div class="ss" data-ss>
+                <img src="/assets/batman/chinatown.jpg" alt="Split-screen frame: player one in the street, player two on a rooftop over Chinatown" width="1800" height="1010" loading="lazy">
+                <div class="ss-p2" data-ss-p2 aria-hidden="true"><span class="ss-flicker"></span></div>
+                <span class="ss-label ss-l1">P1</span><span class="ss-label ss-l2">P2</span>
+                <p class="ss-status" data-ss-status aria-live="polite">P2: black screen</p>
+              </div>
+              <div class="ss-fixes" role="group" aria-label="Toggle rendering fixes for player 2">
+                <button type="button" aria-pressed="false" data-fix="culling">Culling</button>
+                <button type="button" aria-pressed="false" data-fix="lighting">Lighting</button>
+                <button type="button" aria-pressed="false" data-fix="ssbn">SSBN</button>
+                <button type="button" aria-pressed="false" data-fix="composite">Composite</button>
+              </div>
+            </div>
+
+            <div class="gallery" data-gallery>
+              <button type="button" data-full="/assets/batman/ace.jpg"><img src="/assets/batman/ace.jpg" alt="Batman and Red Hood on a rooftop beside Batman using the gauntlet" width="1800" height="1011" loading="lazy"></button>
+              <button type="button" data-full="/assets/batman/street.jpg"><img src="/assets/batman/street.jpg" alt="Batman and Nightwing walking separate streets at 69 fps" width="1800" height="1011" loading="lazy"></button>
+              <button type="button" data-full="/assets/batman/robin.jpg"><img src="/assets/batman/robin.jpg" alt="Batman on the street while Robin explores elsewhere at 77 fps" width="1800" height="1007" loading="lazy"></button>
+            </div>
           </div>
           <div class="project-copy">
             <p class="tag reveal">Game mod · Reverse engineering · Work in progress</p>
@@ -158,11 +174,75 @@
       </div>
     </section>
 
-    <!-- STUDIO -->
+    <!-- WHAT WE DO -->
     <section id="studio" class="studio">
-      <div class="wrap studio-inner">
-        <p class="eyebrow eyebrow-blue reveal">The studio</p>
-        <p class="statement" data-words>IonX Studios builds software that does the real thing. We like hard problems at every layer, from an assistant that works offline on your own machine to a renderer bug hiding in a single shader constant.</p>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">What we do</h2>
+          <p class="section-note">A two-person studio that works at every layer, from gameplay to the GPU.</p>
+        </div>
+        <div class="caps">
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Games</span>
+            <h3>Game development</h3>
+            <p>Gameplay systems and polished experiences in Unity and Roblox Studio, scripted in C#, Lua and Python.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">AI</span>
+            <h3>AI integration</h3>
+            <p>Assistants and in-game AI that run locally, plan their work and check that each step really happened.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Engines</span>
+            <h3>Reverse engineering</h3>
+            <p>Reading shipped engines down to the shader constant, and fixing them from the outside.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Systems</span>
+            <h3>Systems and security</h3>
+            <p>Networking, encrypted device links and low-level tooling, built to be reliable before it is clever.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="team">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display display-light">About the devs</h2>
+          <p class="section-note">The two people behind IonX.</p>
+        </div>
+        <div class="devs">
+          <article class="dev reveal">
+            <div class="dev-photo tilt" data-tilt>
+              <img src="/assets/team/arysr.jpg" alt="Arysr, founder of IonX Studios" width="900" height="1125" loading="lazy">
+              <div class="tilt-glare" aria-hidden="true"></div>
+            </div>
+            <div class="dev-copy">
+              <p class="dev-role">Founder</p>
+              <h3 class="dev-name">Arysr</h3>
+              <p>I'm a software developer and engineer with experience in game development, AI, and systems programming. Through IonX and our independent projects, I've built interactive game systems, developed software, explored reverse engineering, and worked with networking and cybersecurity.</p>
+              <p>I enjoy tackling complex technical challenges, managing projects from concept to completion, and turning ideas into practical solutions. I'm always looking to learn, experiment, and build technology that makes an impact.</p>
+              <ul class="dev-skills" aria-label="Focus areas"><li>Game dev</li><li>AI</li><li>Systems</li><li>Reverse engineering</li><li>Networking</li><li>Security</li></ul>
+              <a class="btn btn-ghost magnetic" href="https://github.com/DevGianrep" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+          <article class="dev reveal">
+            <div class="dev-photo tilt" data-tilt>
+              <img src="/assets/team/uberdiz.jpg" alt="Uberdiz, co-founder of IonX Studios" width="800" height="1000" loading="lazy">
+              <div class="tilt-glare" aria-hidden="true"></div>
+            </div>
+            <div class="dev-copy">
+              <p class="dev-role">Co-Founder</p>
+              <h3 class="dev-name">Uberdiz</h3>
+              <p>I'm a programmer and game developer at IonX, specializing in Roblox Studio, gameplay systems, AI integration, and scripting. With four years of Unity development experience and strong proficiency in Python and Lua, I build efficient, scalable systems tailored to each project's requirements.</p>
+              <p>I focus on clean code, reliable performance, and translating creative ideas into polished, functional experiences that meet client goals.</p>
+              <ul class="dev-skills" aria-label="Focus areas"><li>Roblox Studio</li><li>Unity</li><li>Python</li><li>Lua</li><li>Gameplay systems</li><li>AI integration</li></ul>
+              <a class="btn btn-ghost magnetic" href="https://github.com/uberdiz" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -175,20 +255,10 @@
         </h2>
 
         <div class="contact-grid">
-          <form class="form reveal" data-form action="https://formsubmit.co/IonX.Dev@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New project enquiry from ionx website">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to IonX Studios! This is an automatic reply to say your message landed safely. A real person from the team will read it and get back to you personally. In the meantime you can see our work at github.com/IONX-Studios.">
-            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+          <form class="form reveal" data-form novalidate>
             <div class="field">
               <input id="f-name" name="name" type="text" required autocomplete="name" placeholder=" ">
               <label for="f-name">Your name</label>
-            </div>
-            <div class="field">
-              <input id="f-email" name="email" type="email" required autocomplete="email" placeholder=" ">
-              <label for="f-email">Email address</label>
             </div>
             <fieldset class="chips">
               <legend>What's it about?</legend>
@@ -199,21 +269,26 @@
             </fieldset>
             <div class="field">
               <textarea id="f-msg" name="message" rows="4" required placeholder=" "></textarea>
-              <label for="f-msg">Tell us a little about it</label>
+              <label for="f-msg">What would you like to ask?</label>
             </div>
-            <button type="submit" class="btn btn-light btn-submit magnetic" data-submit>
-              <span class="btn-text">Send message</span>
-              <svg class="btn-spin" viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg>
-            </button>
+            <div class="preview" aria-live="polite">
+              <span class="preview-label">Your email will open in Gmail like this</span>
+              <p><b>To</b> IonX.Dev@gmail.com</p>
+              <p><b>Subject</b> <span data-preview-subject></span></p>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-light btn-submit magnetic">Open in Gmail ↗</button>
+              <a class="alt-mail" href="mailto:IonX.Dev@gmail.com" data-mailto>Use another email app</a>
+            </div>
             <p class="form-msg" data-form-msg role="status" aria-live="polite"></p>
           </form>
 
           <div class="flow reveal" data-flow>
-            <h3>Automatic replies, then a real one</h3>
+            <h3>How it works</h3>
             <ol>
-              <li><span class="step">1</span><div><strong>You send a message</strong><p>Use the form or write to us directly.</p></div></li>
-              <li><span class="step">2</span><div><strong>An instant reply lands in your inbox</strong><p>So you know it arrived, the moment you hit send.</p></div></li>
-              <li><span class="step">3</span><div><strong>We answer personally</strong><p>Someone from the team reads every message and replies.</p></div></li>
+              <li><span class="step">1</span><div><strong>Tell us what you need</strong><p>Pick a topic and write your question.</p></div></li>
+              <li><span class="step">2</span><div><strong>Gmail opens in a new tab</strong><p>The subject and your message are already filled in, sent from your own email.</p></div></li>
+              <li><span class="step">3</span><div><strong>Hit send, we reply</strong><p>Someone from the team reads every message and answers personally.</p></div></li>
             </ol>
             <div class="email-card">
               <span class="email-label">Or email us directly</span>
@@ -233,34 +308,6 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <!-- Shared city scene for the split-screen demo -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05043A"/><stop offset="1" stop-color="#2B27C9"/></linearGradient>
-      <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E0C5C"/><stop offset="1" stop-color="#050428"/></linearGradient>
-      <g id="city">
-        <rect width="400" height="300" fill="url(#sky)"/>
-        <circle cx="300" cy="70" r="30" fill="#E9E8FF" class="moon"/>
-        <g class="far" fill="#1A17A0">
-          <rect x="0" y="170" width="40" height="130"/><rect x="45" y="150" width="30" height="150"/><rect x="80" y="185" width="50" height="115"/>
-          <rect x="135" y="140" width="28" height="160"/><rect x="170" y="175" width="45" height="125"/><rect x="220" y="155" width="35" height="145"/>
-          <rect x="262" y="180" width="48" height="120"/><rect x="315" y="150" width="30" height="150"/><rect x="350" y="170" width="50" height="130"/>
-        </g>
-        <g class="near" fill="url(#bld)">
-          <rect x="10" y="200" width="60" height="100"/><rect x="75" y="120" width="40" height="180"/><path d="M95 95 L115 120 L75 120 Z"/>
-          <rect x="125" y="190" width="70" height="110"/><rect x="200" y="100" width="46" height="200"/><rect x="214" y="70" width="18" height="30"/>
-          <rect x="255" y="210" width="55" height="90"/><rect x="318" y="160" width="40" height="140"/><rect x="362" y="205" width="38" height="95"/>
-        </g>
-        <g class="windows" fill="#FFFFFF">
-          <rect x="84" y="140" width="5" height="7"/><rect x="100" y="160" width="5" height="7"/><rect x="84" y="200" width="5" height="7"/><rect x="100" y="230" width="5" height="7"/>
-          <rect x="210" y="120" width="5" height="7"/><rect x="230" y="135" width="5" height="7"/><rect x="210" y="170" width="5" height="7"/><rect x="230" y="210" width="5" height="7"/><rect x="210" y="250" width="5" height="7"/>
-          <rect x="140" y="210" width="5" height="7"/><rect x="170" y="230" width="5" height="7"/><rect x="330" y="180" width="5" height="7"/><rect x="345" y="220" width="5" height="7"/>
-          <rect x="25" y="220" width="5" height="7"/><rect x="270" y="230" width="5" height="7"/>
-        </g>
-        <path class="beam" d="M223 70 L180 0 L270 0 Z" fill="#FFFFFF" opacity="0.12"/>
-      </g>
-    </defs>
-  </svg>
 
   <script src="/main.js" defer></script>
 </body>
