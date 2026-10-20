@@ -32,22 +32,6 @@
     el.setAttribute('aria-hidden', 'true');
   });
 
-  // ---------- Statement words light up while scrolling ----------
-  const statement = $('[data-words]');
-  let words = [];
-  if (statement) {
-    const text = statement.textContent.trim().split(/\s+/);
-    statement.textContent = '';
-    text.forEach((w, i) => {
-      const s = document.createElement('span');
-      s.className = 'w';
-      s.textContent = w;
-      statement.appendChild(s);
-      if (i < text.length - 1) statement.appendChild(document.createTextNode(' '));
-    });
-    words = $$('.w', statement);
-  }
-
   // ---------- Reveal on scroll ----------
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
@@ -82,12 +66,6 @@
     lastY = y;
     pinScroll = y * 0.12;
 
-    if (words.length) {
-      const r = statement.getBoundingClientRect();
-      const p = clamp((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35), 0, 1);
-      const n = Math.round(p * words.length);
-      words.forEach((w, i) => w.classList.toggle('on', i < n));
-    }
     if (flow) {
       const r = flow.getBoundingClientRect();
       const p = clamp((innerHeight * 0.8 - r.top) / (r.height * 0.8), 0, 1);
@@ -201,58 +179,105 @@
     tabs.forEach((t) => t.addEventListener('click', () => shotIo.disconnect(), { once: true }));
   }
 
-  // ---------- Split-screen demo ----------
+  // ---------- Split-screen clips (play only while visible) ----------
+  const clip = $('[data-clip]');
+  if (clip) {
+    const vids = $$('video', clip);
+    const clipTabs = $$('[data-clip-tab]');
+    const toggle = $('[data-clip-toggle]', clip);
+    let cur = 0, inView = false, userPaused = reduced;
+    const load = (v) => { if (!v.src) v.src = v.dataset.src; };
+    const sync = () => {
+      vids.forEach((v, i) => {
+        v.classList.toggle('is-active', i === cur);
+        if (i === cur && inView && !userPaused) { load(v); v.play().catch(() => {}); } else v.pause();
+      });
+      toggle.classList.toggle('is-paused', userPaused);
+      toggle.setAttribute('aria-label', userPaused ? 'Play video' : 'Pause video');
+    };
+    clipTabs.forEach((t, i) => t.addEventListener('click', () => {
+      cur = i;
+      clipTabs.forEach((x, k) => x.setAttribute('aria-selected', String(k === i)));
+      sync();
+    }));
+    toggle.addEventListener('click', () => { userPaused = !userPaused; sync(); });
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0.35 }).observe(clip);
+    sync();
+  }
+
+  // ---------- Fix lab: each missing fix shows its bug on P2's half ----------
   const ss = $('[data-ss]');
   if (ss) {
     const p2 = $('[data-ss-p2]');
     const status = $('[data-ss-status]');
     const fixes = $$('[data-fix]');
-    const order = ['culling', 'lighting', 'ssbn', 'composite'];
-    const describe = () => {
-      const on = (k) => p2.classList.contains(`fix-${k}`);
-      if (order.every(on)) return 'P2: rendering correctly';
-      if (!on('composite')) return 'P2: black screen (composite writes off the buffer)';
-      if (!on('culling')) return 'P2: empty world (culled against P1)';
-      if (!on('lighting')) return 'P2: unlit, flickering reflections';
-      return 'P2: stale ambient occlusion';
+    // Checked in pipeline order: the last broken stage is what the player would see.
+    const stages = [
+      ['composite', 'P2: black screen (written off the buffer)'],
+      ['culling', 'P2: empty world (culled against P1)'],
+      ['lighting', 'P2: unlit, flickering reflections'],
+      ['ssbn', 'P2: stale ambient occlusion'],
+    ];
+    const update = () => {
+      const on = (k) => fixes.find((f) => f.dataset.fix === k).getAttribute('aria-pressed') === 'true';
+      const broken = stages.find(([k]) => !on(k));
+      p2.className = `ss-p2${broken ? ` bug-${broken[0]}` : ''}`;
+      status.textContent = broken ? broken[1] : 'P2: rendering correctly';
     };
-    const update = () => { status.textContent = describe(); };
     fixes.forEach((b) => b.addEventListener('click', () => {
-      const k = b.dataset.fix;
-      const on = !p2.classList.contains(`fix-${k}`);
-      p2.classList.toggle(`fix-${k}`, on);
-      b.setAttribute('aria-pressed', String(on));
+      ss.dataset.touched = '1';
+      b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
       update();
     }));
     update();
-
-    // Auto-play the fixes once when the demo scrolls into view
+    // Play the fixes once when the frame scrolls into view
     if (!reduced) {
       const ssIo = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         ssIo.disconnect();
-        order.slice().reverse().forEach((k, i) => setTimeout(() => {
+        stages.forEach(([k], i) => setTimeout(() => {
           if (ss.dataset.touched) return;
-          const b = fixes.find((f) => f.dataset.fix === k);
-          if (b.getAttribute('aria-pressed') === 'false') b.click();
-        }, 900 + i * 900));
-      }, { threshold: 0.5 });
+          fixes.find((f) => f.dataset.fix === k).setAttribute('aria-pressed', 'true');
+          update();
+        }, 1000 + i * 1100));
+      }, { threshold: 0.6 });
       ssIo.observe(ss);
-      fixes.forEach((b) => b.addEventListener('pointerdown', () => { ss.dataset.touched = '1'; }));
     }
-
-    // Drag the divider
-    const divider = $('.ss-divider', ss);
-    let dragging = false;
-    const setSplit = (clientX) => {
-      const r = ss.getBoundingClientRect();
-      ss.style.setProperty('--split', `${clamp(((clientX - r.left) / r.width) * 100, 20, 80)}%`);
-    };
-    divider.addEventListener('pointerdown', (e) => { dragging = true; divider.setPointerCapture(e.pointerId); });
-    divider.addEventListener('pointermove', (e) => dragging && setSplit(e.clientX));
-    divider.addEventListener('pointerup', () => { dragging = false; });
-    divider.addEventListener('dblclick', () => ss.style.setProperty('--split', '50%'));
   }
+
+  // ---------- Gallery lightbox ----------
+  const gallery = $('[data-gallery]');
+  if (gallery) {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Screenshot');
+    box.innerHTML = '<button type="button" class="lightbox-close">Close</button><img alt="">';
+    document.body.appendChild(box);
+    const img = $('img', box);
+    let opener = null;
+    const close = () => { box.classList.remove('is-open'); opener?.focus(); };
+    $$('button', gallery).forEach((b) => b.addEventListener('click', () => {
+      opener = b;
+      img.src = b.dataset.full;
+      img.alt = $('img', b).alt;
+      box.classList.add('is-open');
+      $('.lightbox-close', box).focus();
+    }));
+    box.addEventListener('click', (e) => { if (e.target !== img) close(); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+  }
+
+  // ---------- Spotlight that follows the mouse on capability cards ----------
+  $$('[data-spot]').forEach((el) => el.addEventListener('pointermove', (e) => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--sx', `${e.clientX - r.left}px`);
+    el.style.setProperty('--sy', `${e.clientY - r.top}px`);
+  }));
+
+  // Social links not filled in yet do nothing when clicked
+  $$('.social.is-pending, .pcard-link[href="#"]').forEach((a) => a.addEventListener('click', (e) => e.preventDefault()));
 
   // ---------- Copy email ----------
   const toast = $('[data-toast]');
@@ -272,44 +297,47 @@
     }
   }));
 
-  // ---------- Contact form (FormSubmit, with an automatic reply to the sender) ----------
+  // ---------- Contact form: opens a filled-in Gmail draft in a new tab ----------
   const form = $('[data-form]');
   if (form) {
+    const TO = 'IonX.Dev@gmail.com';
     const msg = $('[data-form-msg]');
-    const submit = $('[data-submit]');
-    form.addEventListener('submit', async (e) => {
+    const subjectEl = $('[data-preview-subject]');
+    const mailto = $('[data-mailto]');
+    const compose = () => {
+      const d = Object.fromEntries(new FormData(form));
+      const name = (d.name || '').trim();
+      const subject = `${d.topic}${name ? ` from ${name}` : ''} | IonX Studios website`;
+      const body = `Hi IonX team,\n\n${(d.message || '').trim()}\n\nThanks,\n${name}`;
+      return { subject, body };
+    };
+    const refresh = () => {
+      const { subject, body } = compose();
+      subjectEl.textContent = subject;
+      mailto.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+    form.addEventListener('input', refresh);
+    form.addEventListener('change', refresh);
+    refresh();
+
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       let ok = true;
       $$('.field', form).forEach((f) => {
         const input = $('input, textarea', f);
-        const valid = input.checkValidity() && input.value.trim() !== '';
+        const valid = input.value.trim() !== '';
         f.classList.toggle('is-invalid', !valid);
         if (!valid && ok) { input.focus(); ok = false; }
       });
-      if (!ok) { msg.textContent = 'Please fill in your name, a valid email and a short message.'; return; }
-
-      submit.classList.add('is-sending');
-      submit.disabled = true;
-      msg.textContent = 'Sending…';
-      try {
-        const data = Object.fromEntries(new FormData(form));
-        const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(data),
-        });
-        const json = await res.json().catch(() => ({}));
-        if (!res.ok || String(json.success) === 'false') throw new Error(json.message || 'Request failed');
-        form.reset();
-        form.classList.add('is-sent');
-        msg.textContent = 'Sent! Check your inbox: an automatic reply is on its way.';
-        showToast('Message sent');
-      } catch {
-        msg.innerHTML = 'That did not go through. Please email us at <a href="mailto:IonX.Dev@gmail.com">IonX.Dev@gmail.com</a>.';
-      } finally {
-        submit.classList.remove('is-sending');
-        submit.disabled = false;
-      }
+      if (!ok) { msg.textContent = 'Add your name and a short message first.'; return; }
+      const { subject, body } = compose();
+      const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(TO)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const tab = window.open(url, '_blank');
+      if (tab) tab.opener = null;
+      msg.innerHTML = !tab
+        ? `Your browser blocked the new tab. <a href="${url}" target="_blank" rel="noopener">Open Gmail</a>, or use another email app.`
+        : 'Gmail opened in a new tab with your message filled in. Hit Send there and we will get back to you.';
+      showToast('Opening Gmail');
     });
     $$('input, textarea', form).forEach((i) => i.addEventListener('input', () => i.closest('.field')?.classList.remove('is-invalid')));
   }

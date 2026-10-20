@@ -32,6 +32,7 @@
       <nav id="menu" class="menu" aria-label="Main" data-menu>
         <a href="#work">Work</a>
         <a href="#studio">Studio</a>
+        <a href="#team">Team</a>
         <a href="#contact">Contact</a>
         <a href="#contact" class="btn btn-light magnetic">Start a project</a>
       </nav>
@@ -44,7 +45,7 @@
       <canvas class="ions" aria-hidden="true" data-ions></canvas>
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow reveal">IonX Studios · Independent studio</p>
+          <p class="eyebrow reveal">IonX Studios · Boston, MA, USA</p>
           <h1 class="hero-title" aria-label="Ideas, charged.">
             <span class="line"><span class="split">Ideas,</span></span>
             <span class="line"><span class="split">charged.</span></span>
@@ -100,6 +101,7 @@
           </div>
           <div class="project-copy">
             <p class="tag reveal"><img src="/assets/saint/SAINT.png" alt="" width="28" height="28"> Desktop app · Local AI · v0.4.0</p>
+            <p class="credit reveal">Led by <a href="#dev-uberdiz">Uberdiz</a>, built together with <a href="#dev-arysr">Arysr</a></p>
             <h3 class="project-title reveal">SAINT</h3>
             <p class="reveal">A voice-first AI assistant for Windows. Say “Hey SAINT” and it listens, does the real thing, and answers out loud. The language model, wake word, speech recognition and voice all run on your own PC.</p>
             <ul class="feature-list">
@@ -121,29 +123,45 @@
         <!-- SPLIT SCREEN -->
         <article class="project project-flip" id="splitscreen">
           <div class="project-media reveal">
-            <div class="ss" data-ss>
-              <div class="ss-view ss-p1">
-                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
-                <span class="ss-label">P1</span>
-              </div>
-              <div class="ss-view ss-p2" data-ss-p2>
-                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
-                <span class="ss-flicker" aria-hidden="true"></span>
-                <span class="ss-label">P2</span>
-              </div>
-              <div class="ss-divider" aria-hidden="true"></div>
-              <p class="ss-status" data-ss-status aria-live="polite">P2: black screen</p>
+            <div class="clip" data-clip>
+              <video class="clip-video is-active" muted loop playsinline preload="none" poster="/assets/batman/drive-poster.jpg" data-src="/assets/batman/drive.mp4" aria-label="Split-screen gameplay: both players driving the Batmobile through Gotham"></video>
+              <video class="clip-video" muted loop playsinline preload="none" poster="/assets/batman/batcave-poster.jpg" data-src="/assets/batman/batcave.mp4" aria-label="Split-screen gameplay in the Batcave training simulation"></video>
+              <span class="clip-badge">Captured in-game · 2 players</span>
+              <button type="button" class="clip-play" data-clip-toggle aria-label="Pause video"><span aria-hidden="true"></span></button>
             </div>
-            <div class="ss-fixes" role="group" aria-label="Toggle rendering fixes for player 2">
-              <button type="button" aria-pressed="false" data-fix="culling"><b>01</b> Culling</button>
-              <button type="button" aria-pressed="false" data-fix="lighting"><b>02</b> Lighting</button>
-              <button type="button" aria-pressed="false" data-fix="ssbn"><b>03</b> SSBN</button>
-              <button type="button" aria-pressed="false" data-fix="composite"><b>04</b> Composite</button>
+            <div class="shot-tabs" role="tablist" aria-label="Split-screen clips">
+              <button role="tab" aria-selected="true" data-clip-tab="0">Batmobile</button>
+              <button role="tab" aria-selected="false" data-clip-tab="1">Batcave</button>
             </div>
-            <p class="ss-hint">Turn the fixes on to see player two's view come back. An illustration, not game footage.</p>
+
+            <div class="fixlab">
+              <div class="fixlab-head">
+                <h4>How player two got their screen back</h4>
+                <p>Toggle each fix on a real frame. Player two's half shows what that bug looked like.</p>
+              </div>
+              <div class="ss" data-ss>
+                <img src="/assets/batman/chinatown.jpg" alt="Split-screen frame: player one in the street, player two on a rooftop over Chinatown" width="1800" height="1010" loading="lazy">
+                <div class="ss-p2" data-ss-p2 aria-hidden="true"><span class="ss-flicker"></span></div>
+                <span class="ss-label ss-l1">P1</span><span class="ss-label ss-l2">P2</span>
+                <p class="ss-status" data-ss-status aria-live="polite">P2: black screen</p>
+              </div>
+              <div class="ss-fixes" role="group" aria-label="Toggle rendering fixes for player 2">
+                <button type="button" aria-pressed="false" data-fix="culling">Culling</button>
+                <button type="button" aria-pressed="false" data-fix="lighting">Lighting</button>
+                <button type="button" aria-pressed="false" data-fix="ssbn">SSBN</button>
+                <button type="button" aria-pressed="false" data-fix="composite">Composite</button>
+              </div>
+            </div>
+
+            <div class="gallery" data-gallery>
+              <button type="button" data-full="/assets/batman/ace.jpg"><img src="/assets/batman/ace.jpg" alt="Batman and Red Hood on a rooftop beside Batman using the gauntlet" width="1800" height="1011" loading="lazy"></button>
+              <button type="button" data-full="/assets/batman/street.jpg"><img src="/assets/batman/street.jpg" alt="Batman and Nightwing walking separate streets at 69 fps" width="1800" height="1011" loading="lazy"></button>
+              <button type="button" data-full="/assets/batman/robin.jpg"><img src="/assets/batman/robin.jpg" alt="Batman on the street while Robin explores elsewhere at 77 fps" width="1800" height="1007" loading="lazy"></button>
+            </div>
           </div>
           <div class="project-copy">
             <p class="tag reveal">Game mod · Reverse engineering · Work in progress</p>
+            <p class="credit reveal">By <a href="#dev-arysr">Arysr</a></p>
             <h3 class="project-title reveal">Arkham Knight Split-Screen</h3>
             <p class="reveal">Batman: Arkham Knight never shipped with split-screen. This mod adds up to four local players, and the hard part lives below the gameplay: the engine's renderer quietly assumes there is only ever one view.</p>
             <ul class="feature-list">
@@ -158,11 +176,125 @@
       </div>
     </section>
 
-    <!-- STUDIO -->
+    <!-- WHAT WE DO -->
     <section id="studio" class="studio">
-      <div class="wrap studio-inner">
-        <p class="eyebrow eyebrow-blue reveal">The studio</p>
-        <p class="statement" data-words>IonX Studios builds software that does the real thing. We like hard problems at every layer, from an assistant that works offline on your own machine to a renderer bug hiding in a single shader constant.</p>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">What we do</h2>
+          <p class="section-note">A two-person studio in Boston that works at every layer, from gameplay to the GPU.</p>
+        </div>
+        <div class="caps">
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Games</span>
+            <h3>Game development</h3>
+            <p>Gameplay systems and polished experiences in Unity and Roblox Studio, scripted in C#, Lua and Python.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">AI</span>
+            <h3>AI integration</h3>
+            <p>Assistants and in-game AI that run locally, plan their work and check that each step really happened.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Engines</span>
+            <h3>Reverse engineering</h3>
+            <p>Reading shipped engines down to the shader constant, and fixing them from the outside.</p>
+          </article>
+          <article class="cap reveal" data-spot>
+            <span class="cap-tag">Systems</span>
+            <h3>Systems and security</h3>
+            <p>Networking, encrypted device links and low-level tooling, built to be reliable before it is clever.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="team">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display display-light">About the devs</h2>
+          <p class="section-note">The two people behind IonX, based in Boston, Massachusetts.</p>
+        </div>
+        <div class="devs">
+          <article class="dev reveal" id="dev-arysr">
+            <div class="dev-photo tilt" data-tilt>
+              <img src="/assets/team/arysr.jpg" alt="Arysr, founder of IonX Studios" width="900" height="1125" loading="lazy">
+              <div class="tilt-glare" aria-hidden="true"></div>
+            </div>
+            <div class="dev-copy">
+              <p class="dev-role">Founder · Boston, MA</p>
+              <h3 class="dev-name">Arysr</h3>
+              <p>I'm a software developer and engineer with experience in game development, AI, and systems programming. Through IonX and our independent projects, I've built interactive game systems, developed software, explored reverse engineering, and worked with networking and cybersecurity.</p>
+              <p>I enjoy tackling complex technical challenges, managing projects from concept to completion, and turning ideas into practical solutions. I'm always looking to learn, experiment, and build technology that makes an impact.</p>
+              <ul class="dev-skills" aria-label="Focus areas"><li>Game dev</li><li>AI</li><li>Systems</li><li>Reverse engineering</li><li>Networking</li><li>Security</li></ul>
+              <!-- Social links for Arysr: replace each href="#" with the real link and remove is-pending -->
+              <nav class="socials" aria-label="Arysr elsewhere">
+                <a class="social" href="https://github.com/DevGianrep" target="_blank" rel="noopener" aria-label="Arysr on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span>GitHub</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Arysr on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11Z"/></svg><span>LinkedIn</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Arysr on Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 5.3A16.6 16.6 0 0 0 15.5 4l-.5 1a15.3 15.3 0 0 0-6 0L8.5 4a16.6 16.6 0 0 0-4.1 1.3C1.8 9.2 1.1 13 1.4 16.7a16.7 16.7 0 0 0 5.1 2.6l1.1-1.8c-.6-.2-1.2-.5-1.7-.8l.4-.3a11.9 11.9 0 0 0 11.4 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.8a16.6 16.6 0 0 0 5.1-2.6c.4-4.3-.7-8.1-3-11.4ZM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg><span>Discord</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Arysr on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg><span>X</span></a>
+              </nav>
+            </div>
+          </article>
+          <article class="dev reveal" id="dev-uberdiz">
+            <div class="dev-photo tilt" data-tilt>
+              <img src="/assets/team/uberdiz.jpg" alt="Uberdiz, co-founder of IonX Studios" width="800" height="1000" loading="lazy">
+              <div class="tilt-glare" aria-hidden="true"></div>
+            </div>
+            <div class="dev-copy">
+              <p class="dev-role">Co-Founder · Boston, MA</p>
+              <h3 class="dev-name">Uberdiz</h3>
+              <p>I'm a programmer and game developer at IonX, specializing in Roblox Studio, gameplay systems, AI integration, and scripting. With four years of Unity development experience and strong proficiency in Python and Lua, I build efficient, scalable systems tailored to each project's requirements.</p>
+              <p>I focus on clean code, reliable performance, and translating creative ideas into polished, functional experiences that meet client goals.</p>
+              <ul class="dev-skills" aria-label="Focus areas"><li>Roblox Studio</li><li>Unity</li><li>Python</li><li>Lua</li><li>Gameplay systems</li><li>AI integration</li></ul>
+              <!-- Social links for Uberdiz: replace each href="#" with the real link and remove is-pending -->
+              <nav class="socials" aria-label="Uberdiz elsewhere">
+                <a class="social" href="https://github.com/uberdiz" target="_blank" rel="noopener" aria-label="Uberdiz on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span>GitHub</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Uberdiz on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11Z"/></svg><span>LinkedIn</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Uberdiz on Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 5.3A16.6 16.6 0 0 0 15.5 4l-.5 1a15.3 15.3 0 0 0-6 0L8.5 4a16.6 16.6 0 0 0-4.1 1.3C1.8 9.2 1.1 13 1.4 16.7a16.7 16.7 0 0 0 5.1 2.6l1.1-1.8c-.6-.2-1.2-.5-1.7-.8l.4-.3a11.9 11.9 0 0 0 11.4 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.8a16.6 16.6 0 0 0 5.1-2.6c.4-4.3-.7-8.1-3-11.4ZM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg><span>Discord</span></a>
+                <a class="social is-pending" href="#" target="_blank" rel="noopener" aria-label="Uberdiz on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg><span>X</span></a>
+              </nav>
+            </div>
+          </article>
+        </div>
+        <!-- UBERDIZ PROJECTS -->
+        <div class="more" id="uberdiz-projects">
+          <div class="more-head reveal">
+            <h3>More from Uberdiz</h3>
+            <p>Games and systems built in Roblox Studio and Unity.</p>
+          </div>
+          <div class="pcards">
+            <!-- Copy this <article> once per project. Swap the image placeholder for
+                 <img src="/assets/uberdiz/your-image.jpg" alt="..."> and fill in the text and link. -->
+            <article class="pcard reveal">
+              <div class="pcard-media"><svg viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg></div>
+              <div class="pcard-body">
+                <p class="pcard-meta">[Roblox Studio · Year]</p>
+                <h4>[Project name]</h4>
+                <p>[One or two lines on what it is and what Uberdiz built.]</p>
+                <a class="pcard-link" href="#">View project ↗</a>
+              </div>
+            </article>
+            <article class="pcard reveal">
+              <div class="pcard-media"><svg viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg></div>
+              <div class="pcard-body">
+                <p class="pcard-meta">[Roblox Studio · Year]</p>
+                <h4>[Project name]</h4>
+                <p>[One or two lines on what it is and what Uberdiz built.]</p>
+                <a class="pcard-link" href="#">View project ↗</a>
+              </div>
+            </article>
+            <article class="pcard reveal">
+              <div class="pcard-media"><svg viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg></div>
+              <div class="pcard-body">
+                <p class="pcard-meta">[Roblox Studio · Year]</p>
+                <h4>[Project name]</h4>
+                <p>[One or two lines on what it is and what Uberdiz built.]</p>
+                <a class="pcard-link" href="#">View project ↗</a>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -175,20 +307,10 @@
         </h2>
 
         <div class="contact-grid">
-          <form class="form reveal" data-form action="https://formsubmit.co/IonX.Dev@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New project enquiry from ionx website">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to IonX Studios! This is an automatic reply to say your message landed safely. A real person from the team will read it and get back to you personally. In the meantime you can see our work at github.com/IONX-Studios.">
-            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+          <form class="form reveal" data-form novalidate>
             <div class="field">
               <input id="f-name" name="name" type="text" required autocomplete="name" placeholder=" ">
               <label for="f-name">Your name</label>
-            </div>
-            <div class="field">
-              <input id="f-email" name="email" type="email" required autocomplete="email" placeholder=" ">
-              <label for="f-email">Email address</label>
             </div>
             <fieldset class="chips">
               <legend>What's it about?</legend>
@@ -199,21 +321,26 @@
             </fieldset>
             <div class="field">
               <textarea id="f-msg" name="message" rows="4" required placeholder=" "></textarea>
-              <label for="f-msg">Tell us a little about it</label>
+              <label for="f-msg">What would you like to ask?</label>
             </div>
-            <button type="submit" class="btn btn-light btn-submit magnetic" data-submit>
-              <span class="btn-text">Send message</span>
-              <svg class="btn-spin" viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg>
-            </button>
+            <div class="preview" aria-live="polite">
+              <span class="preview-label">Your email will open in Gmail like this</span>
+              <p><b>To</b> IonX.Dev@gmail.com</p>
+              <p><b>Subject</b> <span data-preview-subject></span></p>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-light btn-submit magnetic">Open in Gmail ↗</button>
+              <a class="alt-mail" href="mailto:IonX.Dev@gmail.com" data-mailto>Use another email app</a>
+            </div>
             <p class="form-msg" data-form-msg role="status" aria-live="polite"></p>
           </form>
 
           <div class="flow reveal" data-flow>
-            <h3>Automatic replies, then a real one</h3>
+            <h3>How it works</h3>
             <ol>
-              <li><span class="step">1</span><div><strong>You send a message</strong><p>Use the form or write to us directly.</p></div></li>
-              <li><span class="step">2</span><div><strong>An instant reply lands in your inbox</strong><p>So you know it arrived, the moment you hit send.</p></div></li>
-              <li><span class="step">3</span><div><strong>We answer personally</strong><p>Someone from the team reads every message and replies.</p></div></li>
+              <li><span class="step">1</span><div><strong>Tell us what you need</strong><p>Pick a topic and write your question.</p></div></li>
+              <li><span class="step">2</span><div><strong>Gmail opens in a new tab</strong><p>The subject and your message are already filled in, sent from your own email.</p></div></li>
+              <li><span class="step">3</span><div><strong>Hit send, we reply</strong><p>Someone from the team reads every message and answers personally.</p></div></li>
             </ol>
             <div class="email-card">
               <span class="email-label">Or email us directly</span>
@@ -233,34 +360,6 @@
 
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <!-- Shared city scene for the split-screen demo -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05043A"/><stop offset="1" stop-color="#2B27C9"/></linearGradient>
-      <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E0C5C"/><stop offset="1" stop-color="#050428"/></linearGradient>
-      <g id="city">
-        <rect width="400" height="300" fill="url(#sky)"/>
-        <circle cx="300" cy="70" r="30" fill="#E9E8FF" class="moon"/>
-        <g class="far" fill="#1A17A0">
-          <rect x="0" y="170" width="40" height="130"/><rect x="45" y="150" width="30" height="150"/><rect x="80" y="185" width="50" height="115"/>
-          <rect x="135" y="140" width="28" height="160"/><rect x="170" y="175" width="45" height="125"/><rect x="220" y="155" width="35" height="145"/>
-          <rect x="262" y="180" width="48" height="120"/><rect x="315" y="150" width="30" height="150"/><rect x="350" y="170" width="50" height="130"/>
-        </g>
-        <g class="near" fill="url(#bld)">
-          <rect x="10" y="200" width="60" height="100"/><rect x="75" y="120" width="40" height="180"/><path d="M95 95 L115 120 L75 120 Z"/>
-          <rect x="125" y="190" width="70" height="110"/><rect x="200" y="100" width="46" height="200"/><rect x="214" y="70" width="18" height="30"/>
-          <rect x="255" y="210" width="55" height="90"/><rect x="318" y="160" width="40" height="140"/><rect x="362" y="205" width="38" height="95"/>
-        </g>
-        <g class="windows" fill="#FFFFFF">
-          <rect x="84" y="140" width="5" height="7"/><rect x="100" y="160" width="5" height="7"/><rect x="84" y="200" width="5" height="7"/><rect x="100" y="230" width="5" height="7"/>
-          <rect x="210" y="120" width="5" height="7"/><rect x="230" y="135" width="5" height="7"/><rect x="210" y="170" width="5" height="7"/><rect x="230" y="210" width="5" height="7"/><rect x="210" y="250" width="5" height="7"/>
-          <rect x="140" y="210" width="5" height="7"/><rect x="170" y="230" width="5" height="7"/><rect x="330" y="180" width="5" height="7"/><rect x="345" y="220" width="5" height="7"/>
-          <rect x="25" y="220" width="5" height="7"/><rect x="270" y="230" width="5" height="7"/>
-        </g>
-        <path class="beam" d="M223 70 L180 0 L270 0 Z" fill="#FFFFFF" opacity="0.12"/>
-      </g>
-    </defs>
-  </svg>
 
   <script src="/main.js" defer></script>
 </body>
