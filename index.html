@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IonX Studios</title>
+  <meta name="description" content="IonX Studios is an independent studio building local-first AI tools and deep game tech, from voice assistants to engine-level mods.">
+  <meta name="theme-color" content="#1E19FF">
+  <meta property="og:title" content="IonX Studios">
+  <meta property="og:description" content="Local-first AI tools and deep game tech.">
+  <meta property="og:image" content="/assets/saint/home.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="cursor is-hidden" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
+
+  <header class="nav" data-nav>
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="IonX Studios home">
+        <svg class="brand-mark" viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg>
+        <span>IONX STUDIOS</span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" data-menu-btn>
+        <span class="sr-only">Menu</span><span class="menu-lines" aria-hidden="true"></span>
+      </button>
+      <nav id="menu" class="menu" aria-label="Main" data-menu>
+        <a href="#work">Work</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-light magnetic">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <canvas class="ions" aria-hidden="true" data-ions></canvas>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">IonX Studios · Independent studio</p>
+          <h1 class="hero-title" aria-label="Ideas, charged.">
+            <span class="line"><span class="split">Ideas,</span></span>
+            <span class="line"><span class="split">charged.</span></span>
+          </h1>
+          <p class="lede reveal">We build local-first AI tools and deep game tech, from a voice assistant that runs entirely on your PC to engine-level rendering fixes in shipped games.</p>
+          <div class="hero-actions reveal">
+            <a href="#work" class="btn btn-light magnetic">See our work</a>
+            <a href="#contact" class="btn btn-ghost magnetic">Get in touch</a>
+          </div>
+        </div>
+        <button class="pinwheel" type="button" aria-label="Spin the IonX pinwheel" data-pinwheel>
+          <svg viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg>
+          <span class="pinwheel-hint" aria-hidden="true">click to spin</span>
+        </button>
+      </div>
+      <a href="#work" class="scroll-cue" aria-label="Scroll to work"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-label="What we do: Local AI, Game tech, Reverse engineering, Desktop apps, Tools">
+      <div class="marquee-track" aria-hidden="true">
+        <span>Local AI</span><i>✦</i><span>Game tech</span><i>✦</i><span>Reverse engineering</span><i>✦</i><span>Desktop apps</span><i>✦</i><span>Tools</span><i>✦</i>
+        <span>Local AI</span><i>✦</i><span>Game tech</span><i>✦</i><span>Reverse engineering</span><i>✦</i><span>Desktop apps</span><i>✦</i><span>Tools</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <section id="work" class="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="display">Selected work</h2>
+          <p class="section-note">Two projects, two very different layers of the stack.</p>
+        </div>
+
+        <!-- SAINT -->
+        <article class="project" id="saint">
+          <div class="project-media reveal">
+            <div class="tilt" data-tilt>
+              <div class="shot-stack" data-shots>
+                <img src="/assets/saint/home.png" alt="SAINT home screen showing the current task, devices and health" class="is-active" width="1440" height="900" loading="lazy">
+                <img src="/assets/saint/halo.png" alt="The SAINT Halo, a floating voice indicator" width="1600" height="900" loading="lazy">
+                <img src="/assets/saint/overlay.png" alt="The SAINT overlay over other windows" width="1600" height="900" loading="lazy">
+                <img src="/assets/saint/music.png" alt="SAINT's Spotify music page" width="1440" height="900" loading="lazy">
+              </div>
+              <div class="tilt-glare" aria-hidden="true"></div>
+            </div>
+            <div class="shot-tabs" role="tablist" aria-label="SAINT screenshots">
+              <button role="tab" aria-selected="true" data-shot="0">Home</button>
+              <button role="tab" aria-selected="false" data-shot="1">Halo</button>
+              <button role="tab" aria-selected="false" data-shot="2">Overlay</button>
+              <button role="tab" aria-selected="false" data-shot="3">Music</button>
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="tag reveal"><img src="/assets/saint/SAINT.png" alt="" width="28" height="28"> Desktop app · Local AI · v0.4.0</p>
+            <h3 class="project-title reveal">SAINT</h3>
+            <p class="reveal">A voice-first AI assistant for Windows. Say “Hey SAINT” and it listens, does the real thing, and answers out loud. The language model, wake word, speech recognition and voice all run on your own PC.</p>
+            <ul class="feature-list">
+              <li class="reveal"><strong>Does whole tasks.</strong> Plans multi-step requests, checks each step really happened, and tries another way when one fails.</li>
+              <li class="reveal"><strong>Asks before it acts.</strong> Safe, Confirm and Autonomous modes, with anything that sends, deletes or closes waiting for your yes.</li>
+              <li class="reveal"><strong>Your PC by voice.</strong> Apps, windows across monitors, browser, Spotify, reminders and memory, all stored locally.</li>
+              <li class="reveal"><strong>SAINT Link.</strong> Your iPhone and other PCs talk to it, encrypted.</li>
+            </ul>
+            <div class="voice reveal" aria-hidden="true">
+              <span class="voice-label">“Hey SAINT, play something chill”</span>
+              <span class="voice-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="project-actions reveal">
+              <a class="btn btn-blue magnetic" href="https://github.com/IONX-Studios/SAINT" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SPLIT SCREEN -->
+        <article class="project project-flip" id="splitscreen">
+          <div class="project-media reveal">
+            <div class="ss" data-ss>
+              <div class="ss-view ss-p1">
+                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
+                <span class="ss-label">P1</span>
+              </div>
+              <div class="ss-view ss-p2" data-ss-p2>
+                <svg class="ss-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#city"/></svg>
+                <span class="ss-flicker" aria-hidden="true"></span>
+                <span class="ss-label">P2</span>
+              </div>
+              <div class="ss-divider" aria-hidden="true"></div>
+              <p class="ss-status" data-ss-status aria-live="polite">P2: black screen</p>
+            </div>
+            <div class="ss-fixes" role="group" aria-label="Toggle rendering fixes for player 2">
+              <button type="button" aria-pressed="false" data-fix="culling"><b>01</b> Culling</button>
+              <button type="button" aria-pressed="false" data-fix="lighting"><b>02</b> Lighting</button>
+              <button type="button" aria-pressed="false" data-fix="ssbn"><b>03</b> SSBN</button>
+              <button type="button" aria-pressed="false" data-fix="composite"><b>04</b> Composite</button>
+            </div>
+            <p class="ss-hint">Turn the fixes on to see player two's view come back. An illustration, not game footage.</p>
+          </div>
+          <div class="project-copy">
+            <p class="tag reveal">Game mod · Reverse engineering · Work in progress</p>
+            <h3 class="project-title reveal">Arkham Knight Split-Screen</h3>
+            <p class="reveal">Batman: Arkham Knight never shipped with split-screen. This mod adds up to four local players, and the hard part lives below the gameplay: the engine's renderer quietly assumes there is only ever one view.</p>
+            <ul class="feature-list">
+              <li class="reveal"><strong>Culling.</strong> The cull pipeline was hard-wired to view 0, so extra players saw nothing. It now runs once per view.</li>
+              <li class="reveal"><strong>Lighting.</strong> The deferred lighting pass only lit the first view and smeared one stray normal across P2's reflections. Each pass is re-run per view.</li>
+              <li class="reveal"><strong>SSBN.</strong> Screen-space bent normals were read and written at P1's pixels. Each view gets its own scratch pass.</li>
+              <li class="reveal"><strong>Composite.</strong> An origin offset applied before checkerboard doubling wrote P2's image off the end of the buffer. One constant, re-staged.</li>
+            </ul>
+            <p class="small reveal">Built in C# on BmSDK, with fixes traced shader by shader through the engine's D3D11 calls.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STUDIO -->
+    <section id="studio" class="studio">
+      <div class="wrap studio-inner">
+        <p class="eyebrow eyebrow-blue reveal">The studio</p>
+        <p class="statement" data-words>IonX Studios builds software that does the real thing. We like hard problems at every layer, from an assistant that works offline on your own machine to a renderer bug hiding in a single shader constant.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2 class="contact-title" aria-label="Let's build something.">
+          <span class="line"><span class="split">Let's build</span></span>
+          <span class="line"><span class="split">something.</span></span>
+        </h2>
+
+        <div class="contact-grid">
+          <form class="form reveal" data-form action="https://formsubmit.co/IonX.Dev@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New project enquiry from ionx website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to IonX Studios! This is an automatic reply to say your message landed safely. A real person from the team will read it and get back to you personally. In the meantime you can see our work at github.com/IONX-Studios.">
+            <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="field">
+              <input id="f-name" name="name" type="text" required autocomplete="name" placeholder=" ">
+              <label for="f-name">Your name</label>
+            </div>
+            <div class="field">
+              <input id="f-email" name="email" type="email" required autocomplete="email" placeholder=" ">
+              <label for="f-email">Email address</label>
+            </div>
+            <fieldset class="chips">
+              <legend>What's it about?</legend>
+              <label><input type="radio" name="topic" value="A new project" checked><span>A new project</span></label>
+              <label><input type="radio" name="topic" value="SAINT"><span>SAINT</span></label>
+              <label><input type="radio" name="topic" value="Split-screen mod"><span>Split-screen mod</span></label>
+              <label><input type="radio" name="topic" value="Just saying hi"><span>Just saying hi</span></label>
+            </fieldset>
+            <div class="field">
+              <textarea id="f-msg" name="message" rows="4" required placeholder=" "></textarea>
+              <label for="f-msg">Tell us a little about it</label>
+            </div>
+            <button type="submit" class="btn btn-light btn-submit magnetic" data-submit>
+              <span class="btn-text">Send message</span>
+              <svg class="btn-spin" viewBox="505 460 590 630" aria-hidden="true"><path d="M525 506H799V780A274 274 0 0 1 525 506Z M1008 475L1078 753L800 823A287 287 0 0 1 1008 475Z M1075 1039H802V766A273 273 0 0 1 1075 1039Z M522 783L811 745A291 291 0 0 1 561 1073Z"/></svg>
+            </button>
+            <p class="form-msg" data-form-msg role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="flow reveal" data-flow>
+            <h3>Automatic replies, then a real one</h3>
+            <ol>
+              <li><span class="step">1</span><div><strong>You send a message</strong><p>Use the form or write to us directly.</p></div></li>
+              <li><span class="step">2</span><div><strong>An instant reply lands in your inbox</strong><p>So you know it arrived, the moment you hit send.</p></div></li>
+              <li><span class="step">3</span><div><strong>We answer personally</strong><p>Someone from the team reads every message and replies.</p></div></li>
+            </ol>
+            <div class="email-card">
+              <span class="email-label">Or email us directly</span>
+              <a class="email" href="mailto:IonX.Dev@gmail.com">IonX.Dev@gmail.com</a>
+              <button type="button" class="copy" data-copy="IonX.Dev@gmail.com">Copy address</button>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span>© <span data-year>2026</span> IonX Studios</span>
+          <nav aria-label="Elsewhere"><a href="https://github.com/IONX-Studios" target="_blank" rel="noopener">GitHub ↗</a><a href="mailto:IonX.Dev@gmail.com">Email</a><a href="#top" class="to-top">Back to top ↑</a></nav>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <!-- Shared city scene for the split-screen demo -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05043A"/><stop offset="1" stop-color="#2B27C9"/></linearGradient>
+      <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E0C5C"/><stop offset="1" stop-color="#050428"/></linearGradient>
+      <g id="city">
+        <rect width="400" height="300" fill="url(#sky)"/>
+        <circle cx="300" cy="70" r="30" fill="#E9E8FF" class="moon"/>
+        <g class="far" fill="#1A17A0">
+          <rect x="0" y="170" width="40" height="130"/><rect x="45" y="150" width="30" height="150"/><rect x="80" y="185" width="50" height="115"/>
+          <rect x="135" y="140" width="28" height="160"/><rect x="170" y="175" width="45" height="125"/><rect x="220" y="155" width="35" height="145"/>
+          <rect x="262" y="180" width="48" height="120"/><rect x="315" y="150" width="30" height="150"/><rect x="350" y="170" width="50" height="130"/>
+        </g>
+        <g class="near" fill="url(#bld)">
+          <rect x="10" y="200" width="60" height="100"/><rect x="75" y="120" width="40" height="180"/><path d="M95 95 L115 120 L75 120 Z"/>
+          <rect x="125" y="190" width="70" height="110"/><rect x="200" y="100" width="46" height="200"/><rect x="214" y="70" width="18" height="30"/>
+          <rect x="255" y="210" width="55" height="90"/><rect x="318" y="160" width="40" height="140"/><rect x="362" y="205" width="38" height="95"/>
+        </g>
+        <g class="windows" fill="#FFFFFF">
+          <rect x="84" y="140" width="5" height="7"/><rect x="100" y="160" width="5" height="7"/><rect x="84" y="200" width="5" height="7"/><rect x="100" y="230" width="5" height="7"/>
+          <rect x="210" y="120" width="5" height="7"/><rect x="230" y="135" width="5" height="7"/><rect x="210" y="170" width="5" height="7"/><rect x="230" y="210" width="5" height="7"/><rect x="210" y="250" width="5" height="7"/>
+          <rect x="140" y="210" width="5" height="7"/><rect x="170" y="230" width="5" height="7"/><rect x="330" y="180" width="5" height="7"/><rect x="345" y="220" width="5" height="7"/>
+          <rect x="25" y="220" width="5" height="7"/><rect x="270" y="230" width="5" height="7"/>
+        </g>
+        <path class="beam" d="M223 70 L180 0 L270 0 Z" fill="#FFFFFF" opacity="0.12"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
