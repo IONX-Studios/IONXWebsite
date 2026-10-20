@@ -276,6 +276,9 @@
     el.style.setProperty('--sy', `${e.clientY - r.top}px`);
   }));
 
+  // Social links not filled in yet do nothing when clicked
+  $$('.social.is-pending, .pcard-link[href="#"]').forEach((a) => a.addEventListener('click', (e) => e.preventDefault()));
+
   // ---------- Copy email ----------
   const toast = $('[data-toast]');
   let toastTimer;
